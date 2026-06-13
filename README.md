@@ -1,4 +1,3 @@
-
 ## 📊 Evaluation Results: 20-Epoch CIFAR-10 Sprint
 
 This benchmark isolates **initial convergence speed**, **gradient flow health**, and **parameter efficiency** by heavily constraining the training schedule to just 20 epochs. Rather than measuring ultimate representational capacity (which requires 150+ epochs), this sprint reveals how effectively each architecture's wiring routes loss gradients back to early layers.
@@ -18,8 +17,8 @@ This benchmark isolates **initial convergence speed**, **gradient flow health**,
 **Accuracy: 78%**
 
 <p align="center">
-  <img src="images/vanilla_cnn_loss_acc.webp" width="48%" alt="CNN Loss and Accuracy" />
-  <img src="images/vanilla_cnn_grad_all.webp" width="48%" alt="CNN Gradient Analysis" />
+  <img src="article/images/vanilla_cnn_loss_acc.webp" width="48%" alt="CNN Loss and Accuracy" />
+  <img src="article/images/vanilla_cnn_grad_all.webp" width="48%" alt="CNN Gradient Analysis" />
 </p>
 
 **Architectural Insight & Gradient Health:**
@@ -31,8 +30,8 @@ The plain CNN processes features in a strictly sequential, unreferenced pipeline
 **Accuracy: 84%**
 
 <p align="center">
-  <img src="images/model_resnet_loss_acc.webp" width="48%" alt="ResNet Loss and Accuracy" />
-  <img src="images/model_resnet_grad_all.webp" width="48%" alt="ResNet Gradient Analysis" />
+  <img src="article/images/resnet_loss_acc.webp" width="48%" alt="ResNet Loss and Accuracy" />
+  <img src="article/images/resnet_grad_all.webp" width="48%" alt="ResNet Gradient Analysis" />
 </p>
 
 **Architectural Insight & Gradient Health:**
@@ -44,8 +43,8 @@ ResNet fundamentally alters the learning objective by using parameter-free ident
 **Accuracy: 88% — *Sprint Winner***
 
 <p align="center">
-  <img src="images/model_densenet_loss_acc.webp" width="48%" alt="DenseNet Loss and Accuracy" />
-  <img src="images/model_densenet_grad_all.webp" width="48%" alt="DenseNet Gradient Analysis" />
+  <img src="article/images/densenet_loss_acc.webp" width="48%" alt="DenseNet Loss and Accuracy" />
+  <img src="article/images/densenet_grad_all.webp" width="48%" alt="DenseNet Gradient Analysis" />
 </p>
 
 **Architectural Insight & Gradient Health:**
@@ -57,12 +56,11 @@ DenseNet dominates the short-training regime through aggressive feature reuse, c
 **Accuracy: 82%**
 
 <p align="center">
-  <img src="images/model_dla_loss_acc.webp" width="48%" alt="DLA Loss and Accuracy" />
-  <img src="images/model_dla_grad_all.webp" width="48%" alt="DLA Gradient Analysis" />
+  <img src="article/images/dla_loss_acc.webp" width="48%" alt="DLA Loss and Accuracy" />
+  <img src="article/images/dla_grad_all.webp" width="48%" alt="DLA Gradient Analysis" />
 </p>
 
 **Architectural Insight & Gradient Health:**
 While DLA is arguably the most sophisticated architecture—unifying spatial fusion via Iterative Deep Aggregation (IDA) and semantic fusion via Hierarchical Deep Aggregation (HDA)—it underperforms DenseNet and ResNet *specifically* in this 20-epoch sprint. Unlike DenseNet's raw concatenation or ResNet's simple addition, DLA uses dedicated **Aggregation Nodes** (Root nodes) equipped with $1 \times 1$ convolutions to actively mix and compress feature hierarchies. 
 
 The gradient flow must navigate these learned mixing weights. Before the network can extract optimal features, it must first learn *how* to combine them. These $1 \times 1$ nodes act as initial gradient bottlenecks. While DLA achieves immense parameter efficiency and state-of-the-art representation in the long run, its complex fractal tree structures demand a standard, full-length training schedule to properly optimize.
-
