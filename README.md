@@ -1,6 +1,6 @@
 ## 📊 Evaluation Results: 20-Epoch CIFAR-10 Sprint
 
-Read complete article on ![Medium](https://medium.com/@aakashg.1857/understanding-modern-cnn-design-comparing-cnn-resnet-densenet-and-dla-9d364ac79a82)
+Read complete article on [Medium](https://medium.com/@aakashg.1857/understanding-modern-cnn-design-comparing-cnn-resnet-densenet-and-dla-9d364ac79a82)
 
 This benchmark isolates **initial convergence speed**, **gradient flow health**, and **parameter efficiency** by heavily constraining the training schedule to just 20 epochs. Rather than measuring ultimate representational capacity (which requires 150+ epochs), this sprint reveals how effectively each architecture's wiring routes loss gradients back to early layers.
 
